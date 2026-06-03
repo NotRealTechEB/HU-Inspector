@@ -5,10 +5,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-public class Conexiones {
+public class ConexionInspector {
     @Bean(name ="isnpector")
     public WebClient isnpector(){
-        return WebClient.builder().baseUrl("http://localhost:8087").build();
+        return WebClient.builder().baseUrl("http://localhost:8087/api/v1.5/Inspector")
+        .build();
     }
 
 }
