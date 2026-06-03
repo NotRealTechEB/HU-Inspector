@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.reactive.function.client.WebClientRequestException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import cl.dgac.huinspector.dtos.Exepciones;
@@ -29,15 +30,14 @@ public class ManejoExepcionesGlobales {
 
     
 
-    @ExceptionHandler(MicroservicioCaidoException.class)
-    public ResponseEntity<Exepciones> manejarServicioCaido(MicroservicioCaidoException ex, WebRequest request) {
-        return construirRespuesta(HttpStatus.BAD_GATEWAY, ex.getMessage(), request);
+    @ExceptionHandler(WebClientRequestException.class)
+    public ResponseEntity<Exepciones> manejarServicioCaido(WebClientRequestException ex, WebRequest request) {
+        
+        return construirRespuesta(HttpStatus.BAD_GATEWAY, "microservicio caido", request);
     }
     @ExceptionHandler(WebClientResponseException.class)
     public ResponseEntity<String> manejarErrorWebClient(WebClientResponseException ex) {
-        
         String jsonOriginal = ex.getResponseBodyAsString();
-        
         return ResponseEntity
                 .status(ex.getStatusCode())
                 .header("Content-Type", "application/json")
