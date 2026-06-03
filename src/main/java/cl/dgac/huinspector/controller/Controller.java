@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
-@RequestMapping("api/v.1/huInspector")
+@RequestMapping("/api/v1/huInspector")
 public class Controller {
     private final  ServiciosInspector servicio;
 

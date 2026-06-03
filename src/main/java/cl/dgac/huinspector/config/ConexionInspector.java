@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class ConexionInspector {
     @Bean(name ="isnpector")
     public WebClient isnpector(){
-        return WebClient.builder().baseUrl("http://localhost:8087/api/v1.5/Inspector")
+        return WebClient.builder().baseUrl("http://localhost:8087")
         .build();
     }
 

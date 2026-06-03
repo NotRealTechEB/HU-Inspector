@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import cl.dgac.huinspector.dtos.DtoInspector;
-import cl.dgac.huinspector.exepcion.ErrorRecursos;
 
 @Service
 public class ServiciosInspector {
@@ -16,17 +15,15 @@ public class ServiciosInspector {
     }
     
     public ResponseEntity<DtoInspector> validarRut(String rut){
-        try {
+
             return webClient.get()
             .uri(uriBuilder -> uriBuilder
-            .path("api/v1.5/Inspector/bucarRut")
+            .path("/api/v1.5/Inspector/bucarRut")
             .queryParam("rut", rut)
             .build()
             ).retrieve()
             .toEntity(DtoInspector.class)
-            .block();
-        } catch (Exception e) {
-            throw new ErrorRecursos("falla en comunicacion co micro servicio");
-        }
+            .block()
+            ;
     }
 }
