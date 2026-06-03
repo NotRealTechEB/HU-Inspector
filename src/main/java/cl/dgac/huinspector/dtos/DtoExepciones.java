@@ -2,7 +2,7 @@ package cl.dgac.huinspector.dtos;
 
 import java.time.LocalDateTime;
 
-public record Exepciones(
+public record DtoExepciones(
     LocalDateTime timestap,
     Integer codigoestado,
     String error,

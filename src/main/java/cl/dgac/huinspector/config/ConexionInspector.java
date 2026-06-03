@@ -11,5 +11,11 @@ public class ConexionInspector {
         return WebClient.builder().baseUrl("http://localhost:8087")
         .build();
     }
+    @Bean (name = "planvuelo")
+    public WebClient planvuelo(){
+        return WebClient.builder().baseUrl("http://localhost:8084")
+        .build();
+    }
+
 
 }

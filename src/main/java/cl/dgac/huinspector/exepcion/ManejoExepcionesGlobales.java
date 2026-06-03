@@ -10,14 +10,14 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.reactive.function.client.WebClientRequestException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
-import cl.dgac.huinspector.dtos.Exepciones;
+import cl.dgac.huinspector.dtos.DtoExepciones;
 
 @ControllerAdvice
 public class ManejoExepcionesGlobales {
-    private ResponseEntity<Exepciones> construirRespuesta(HttpStatus status, String mensaje, WebRequest request) {
+    private ResponseEntity<DtoExepciones> construirRespuesta(HttpStatus status, String mensaje, WebRequest request) {
         String ruta = request.getDescription(false).replace("uri=", "");
         
-        Exepciones dto = new Exepciones(
+        DtoExepciones dto = new DtoExepciones(
             LocalDateTime.now(),
             status.value(),
             status.getReasonPhrase(),
@@ -31,7 +31,7 @@ public class ManejoExepcionesGlobales {
     
 
     @ExceptionHandler(WebClientRequestException.class)
-    public ResponseEntity<Exepciones> manejarServicioCaido(WebClientRequestException ex, WebRequest request) {
+    public ResponseEntity<DtoExepciones> manejarServicioCaido(WebClientRequestException ex, WebRequest request) {
         
         return construirRespuesta(HttpStatus.BAD_GATEWAY, "microservicio caido", request);
     }
