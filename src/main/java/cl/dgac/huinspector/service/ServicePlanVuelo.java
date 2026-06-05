@@ -18,7 +18,7 @@ public class ServicePlanVuelo {
     }
     public List<DtoPlanVuelo> listar(){
         return planvuelo.get().uri(uriBuilder->uriBuilder
-            .path("/api/v1/plan-vuelo")
+            .path("/api/v1/planvuelo")
             .build()
         ).retrieve()
         .bodyToMono(new ParameterizedTypeReference<List<DtoPlanVuelo>>() {})

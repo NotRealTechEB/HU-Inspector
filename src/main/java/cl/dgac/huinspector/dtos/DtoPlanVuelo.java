@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public record DtoPlanVuelo(
     LocalDateTime horaDespegue,
     LocalDateTime horaAterrizajeEstimada,
-    int tiempoEstimado,
+    //Integer tiempoEstimado,
     String psGPS,
     double altMax,
     String region,
