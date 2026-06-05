@@ -16,6 +16,10 @@ public class ConexionInspector {
         return WebClient.builder().baseUrl("http://localhost:8084")
         .build();
     }
+    @Bean(name ="incidente")
+    public WebClient incidente(){
+        return WebClient.builder().baseUrl("http://localhost:8091")
+        .build();}
 
 
 }
