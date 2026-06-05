@@ -3,14 +3,14 @@ package cl.dgac.huinspector.dtos;
 import java.time.LocalDateTime;
 
 public record DtoPlanVuelo(
-    LocalDateTime horaDespegue,
-    LocalDateTime horaAterrizajeEstimada,
-    //Integer tiempoEstimado,
+    String codigoVuelo,
+    String rutEmpresaMandante,
+    String numeroRegistro,
+    LocalDateTime fechaPV,
     String psGPS,
     double altMax,
     String region,
-    String nomCompPiloto,
-    String rutPiloto,
-    String numeroRegistro
+    String estadoPV,
+    PilotoDto pilotoDTO
 ) {
 }
