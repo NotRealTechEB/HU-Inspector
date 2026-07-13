@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DGAC - Sistema de Gestión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    
+    <div class="text-center mb-5 p-4 shadow-sm bg-white rounded">
+        <h1 class="display-5 text-dark">Sistema de Gestión DGAC</h1>
+        
+        <div th:if="${!Inspector}" class="mt-4">
+            <h4 class="mb-3">Identificación de Inspector</h4>
+            <form action="/validar" method="get" class="row g-3 justify-content-center">
+                <div class="col-auto">
+                    <input type="text" name="rut" class="form-control" placeholder="Ingrese RUT" required>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Validar Inspector</button>
+                </div>
+            </form>
+        </div>
+
+        <div th:if="${Inspector}" class="mt-3">
+            <h2 class="text-primary">
+                ¡Bienvenido, <span th:text="${dtoInspector.nombre} + ' ' + ${dtoInspector.apellido}">Usuario</span>!
+            </h2>
+            <p class="text-muted" th:text="'RUT: ' + ${dtoInspector.rut}"></p>
+            
+            <div class="mt-4 d-flex justify-content-center gap-3">
+                <a href="/incidentes" class="btn btn-warning btn-lg shadow-sm">
+                    <i class="bi bi-exclamation-triangle"></i> Ver Incidentes
+                </a>
+                <a href="/autorizar-vuelos" class="btn btn-success btn-lg shadow-sm">
+                    <i class="bi bi-check-circle"></i> Autorizar Vuelos
+                </a>
+            </div>
+            
+            <div class="mt-4">
+                <a href="/" class="btn btn-outline-danger btn-sm">Cerrar sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <div th:if="${Inspector}" class="card shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Panel de Control de Vuelos</h5>
+        </div>
+        <div class="card-body">
+            <p>Seleccione una acción arriba o visualice el resumen de sus operaciones activas.</p>
+            </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

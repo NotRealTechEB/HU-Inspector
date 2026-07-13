@@ -11,6 +11,6 @@ public record DtoPlanVuelo(
     double altMax,
     String region,
     String estadoPV,
-    PilotoDto pilotoDTO
+    String  rutPiloto
 ) {
 }

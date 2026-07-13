@@ -24,5 +24,16 @@ public class ServicePlanVuelo {
         .bodyToMono(new ParameterizedTypeReference<List<DtoPlanVuelo>>() {})
         .block();
     }
+    public DtoPlanVuelo aprobarVuelo(String codigoVuelo, String estado){
+        List<DtoPlanVuelo> lista =listar();
+        for (DtoPlanVuelo x:lista){
+            if (x.codigoVuelo().equals(codigoVuelo)){
+                DtoPlanVuelo nuevo = new DtoPlanVuelo(x.codigoVuelo(),x.rutEmpresaMandante(),
+            x.numeroRegistro(),x.fechaPV(),x.psGPS(),x.altMax(),x.region(),estado,x.rutPiloto());
+            return nuevo;
+            }
+        }
+        throw new RuntimeException();
+    }
 
 }

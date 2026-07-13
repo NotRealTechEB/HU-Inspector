@@ -24,7 +24,9 @@ public class Controller {
     private final ServicePlanVuelo servicio2;
     private final ServiceIncidentes servicio3;
 
-    public Controller (ServiciosInspector servicio, ServicePlanVuelo servicio2,ServiceIncidentes servicio3){
+    public Controller (ServiciosInspector servicio,
+        ServicePlanVuelo servicio2,
+        ServiceIncidentes servicio3){
         this.servicio=servicio;
         this.servicio2=servicio2;
         this.servicio3=servicio3;

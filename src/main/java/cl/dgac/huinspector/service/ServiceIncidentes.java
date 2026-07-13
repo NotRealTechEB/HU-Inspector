@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import cl.dgac.huinspector.dtos.DtoIncidente;
 
+@Service
 public class ServiceIncidentes {
 
     private final WebClient cliente;
@@ -21,6 +23,7 @@ public class ServiceIncidentes {
             .build()
         ).retrieve().bodyToMono(new ParameterizedTypeReference <List<DtoIncidente>>(){}).block();
     }
+    
     public List<DtoIncidente> listarFechas(String f1,String f2){
         return cliente.get().uri(builder -> builder 
             .path("/api/v1.0/Incidentes/filtradoPorFechas").queryParam("fechaInicio", f1)
